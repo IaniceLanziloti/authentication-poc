@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  authentication-api:
+    image: authentication-api
+    container_name: authentication-api
+    build:
+      context: .
+    command: 'npm run start'
+    ports:
+      - 3333:3333
+    user: node
+    volumes:
+      - .:/application
+    working_dir: /application
+    env_file: .env.local
+    depends_on:
+      - db
+  
+  authentication-api-db:
+    image: mongo
+    container_name: authentication-api-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: authentication-db
+      MONGO_INITDB_ROOT_PASSWORD: authentication-db
+    volumes:
+      - authentication_db:/data/db
+      - authentication_db_config:/data/configdb
+    ports:
+      - 27017:27017
+    command: mongod
+
+volumes:
+  authentication_db:
+  authentication_db_config:

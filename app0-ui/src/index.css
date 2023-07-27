@@ -1,0 +1,14 @@
+@tailwind base;
+
+@layer base {
+  html {
+    @apply bg-slate-900;
+    @apply text-zinc-50;
+  } 
+  input {
+    @apply text-zinc-700
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
