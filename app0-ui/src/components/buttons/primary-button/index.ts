@@ -1,1 +1,1 @@
-export * from './primary-button.template'
+export * from './primary-button.component'

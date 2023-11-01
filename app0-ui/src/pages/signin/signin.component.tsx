@@ -17,6 +17,7 @@ export function SigninPage() {
   const signIn = useSignIn()
 
   const onSubmit: SubmitHandler<AuthenticationFormData> = useCallback(async (data) => {
+
     const response = await api.post('/signin', data)
     const logged = signIn({
       token: response.data.accessToken,

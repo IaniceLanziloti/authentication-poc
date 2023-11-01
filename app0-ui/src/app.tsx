@@ -19,7 +19,7 @@ function App() {
     <AuthProvider 
       authType= {"cookie"}
       authName= {'_auth'}
-      cookieDomain={domain}
+      cookieDomain={domain || 'http://localhost/'}
       cookieSecure={window.location.protocol === "https:"}
     >
       <BrowserRouter>
