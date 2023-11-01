@@ -36,13 +36,12 @@ describe('Primary button component', () => {
 
     expect(await findByText(initialText)).toBeInTheDocument()
   })
-})
 
-  it('should be able to render a login text when the click action was a promise', async () => {
+  it('should be able to render a login text and disable button when the click action was a promise', async () => {
     const loadingText = "Loading..."
     const initialText = "Testing button click"
 
-    const handleClick = () => new Promise<any>(
+    const handleClick = () => new Promise<void>(
       resolve => setTimeout(resolve, 500)
     );
 
@@ -58,18 +57,19 @@ describe('Primary button component', () => {
 
     expect(getByTestId('primary-button')).toBeInTheDocument()
     expect(getByTestId('primary-button')).toHaveTextContent(initialText)
-    
 
     const primaryButton = getByTestId('primary-button')
 
     userEvent.click(primaryButton)
 
-    expect(await findByText(loadingText,{},{timeout:500})).toBeInTheDocument()
-    expect(await findByText(initialText,{},{timeout:1000})).toBeInTheDocument()
+    const loadingButton = await findByText(loadingText,{},{timeout:500})
+    expect(loadingButton).toBeInTheDocument()
+    expect(loadingButton).toBeDisabled()
 
-    // await waitFor(() => {
-    //   expect(getByText(loadingText)).toBeInTheDocument()
-    // })
+    const afterResolveButton = await findByText(initialText,{},{timeout:1000})
+
+    expect(afterResolveButton).toBeInTheDocument()
+    expect(afterResolveButton).toBeEnabled()
   })
 
-
+})
