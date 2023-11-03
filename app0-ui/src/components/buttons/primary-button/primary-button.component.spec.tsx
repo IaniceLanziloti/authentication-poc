@@ -1,3 +1,4 @@
+
 import { describe, expect, it } from "vitest";
 
 import userEvent from '@testing-library/user-event'
@@ -9,23 +10,33 @@ describe('Primary button component', () => {
 
   it('should be able to render a primary button component', ()=> {
     const { getByTestId } = render(
-      <PrimaryButton>Testing primary button</PrimaryButton>
+      <PrimaryButton 
+        type="button"
+      >
+        Testing primary button
+      </PrimaryButton>
     )
 
     expect(getByTestId('primary-button')).toBeInTheDocument()
-    expect(getByTestId('primary-button')).toHaveTextContent('Testing primary button')
+
+    const primaryButton = getByTestId('primary-button')
+
+    userEvent.click(primaryButton)
+
+    expect(primaryButton).toHaveTextContent('Testing primary button')
   })
 
   it('should be able click on a primary button', async () => {
-
     const handleClick = () => { return }
     const initialText = "Testing button click"
 
-    const { getByTestId, findByText } = render (
+    const { getByTestId, findByText } = render(
       <PrimaryButton 
         onClick={handleClick}
         type='button'
-      >Testing button click</PrimaryButton>
+      >
+        {initialText}
+      </PrimaryButton>
     )
 
     expect(getByTestId('primary-button')).toBeInTheDocument()

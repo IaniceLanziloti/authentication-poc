@@ -4,7 +4,7 @@ import { FormTemplate } from "./form/form.template";
 import { FormLogo } from "./form-logo";
 
 export const Forms = {
-   Form: FormTemplate ,
+   Form: FormTemplate,
    Logo: FormLogo,
    ActionsWrapper: FormActionsWrapper,
    ContentWrapper: FormContentWrapper

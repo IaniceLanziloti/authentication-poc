@@ -1,1 +1,1 @@
-export * from './signin-form.template'
+export * from './signin-form.component'

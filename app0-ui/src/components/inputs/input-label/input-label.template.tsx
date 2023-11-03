@@ -1,8 +1,11 @@
 import { InputLabelProps } from "./input-label.types";
 
-export function InputLabel({children, ...rest}:InputLabelProps) {
+export function InputLabel({ children, ...rest }:InputLabelProps) {
   return (
-    <label {...rest}>
+    <label 
+      data-testid='input-label'
+      {...rest}
+    >
       {children}
     </label>
   )

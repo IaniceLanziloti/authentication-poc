@@ -2,9 +2,9 @@ import { Buttons, Inputs, Forms } from '../../../components'
 import { SigninFormProps } from './signin-form.types'
 
 
-export function SigninForm({ handleSubmit, register }:SigninFormProps) {
+export function SigninFormTemplate({ handleSubmit, register }:SigninFormProps) {
   return (
-    <Forms.Form onSubmit={ handleSubmit } >
+    <Forms.Form data-testid='signin-form-template' onSubmit={ handleSubmit } >
       <Forms.Logo/>
       <Forms.ContentWrapper>
         <Inputs.Group>
@@ -17,7 +17,7 @@ export function SigninForm({ handleSubmit, register }:SigninFormProps) {
         </Inputs.Group>
       </Forms.ContentWrapper>
       <Forms.ActionsWrapper>
-        <Buttons.Primary> Sign-in </Buttons.Primary>
+        <Buttons.Primary loadingText='Sending...'>Sign-in</Buttons.Primary>
         <Buttons.Link href="/signup">Don't have an account?</Buttons.Link>
         <Buttons.Link href="#">Forgot your password?</Buttons.Link>
       </Forms.ActionsWrapper>

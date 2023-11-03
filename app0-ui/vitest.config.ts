@@ -13,7 +13,7 @@ export default defineConfig({
       reporter: ['lcov', 'html'], 
       reportsDirectory: 'coverage',
       all: true,
-      include: [ '**/src/**/*.template.tsx']
+      include: [ '**/src/**/*.template.tsx','**/src/**/*.component.tsx']
     },
     setupFiles: './vitest.setup.ts'
   }
