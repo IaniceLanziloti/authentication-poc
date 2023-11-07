@@ -46,7 +46,7 @@ describe("Form content wrapper template", () => {
 
     await waitFor(()=>{
       expect(input).toHaveValue('testing')
-    },{timeout:500})
+    },{ timeout: 500 })
 
   })
 })

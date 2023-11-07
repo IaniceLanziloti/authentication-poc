@@ -5,13 +5,8 @@ import { SigninFormTemplate } from "./signin-form.template";
 
 describe("Signin Form template", () => {
   it("should be able to render a signin form template", () => {
-    async function handleSubmit () {
-      return
-    }
-
-    function register(params:any):any {
-      return
-    }
+    const handleSubmit = vi.fn()
+    const register = vi.fn()
 
     const { getByTestId, getByText, getByRole } = render(
       <SigninFormTemplate

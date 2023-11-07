@@ -4,16 +4,16 @@ import { SigninFormProps } from './signin-form.types'
 
 export function SigninFormTemplate({ handleSubmit, register }:SigninFormProps) {
   return (
-    <Forms.Form data-testid='signin-form-template' onSubmit={ handleSubmit } >
+    <Forms.Form data-testid='signin-form-template' onSubmit={ handleSubmit }>
       <Forms.Logo/>
       <Forms.ContentWrapper>
         <Inputs.Group>
           <Inputs.Label >Name</Inputs.Label>
-          <Inputs.Input type="email" placeholder='email' autoComplete="email" {...register('email')}/>
+          <Inputs.Input type='email' placeholder='email' autoComplete='email' {...register('email')}/>
         </Inputs.Group>
         <Inputs.Group>
           <Inputs.Label >Password</Inputs.Label>
-          <Inputs.Input type="password" placeholder='password' autoComplete="current-password" {...register('password')}/>
+          <Inputs.Input type='password' placeholder='password' autoComplete='current-password' {...register('password')}/>
         </Inputs.Group>
       </Forms.ContentWrapper>
       <Forms.ActionsWrapper>

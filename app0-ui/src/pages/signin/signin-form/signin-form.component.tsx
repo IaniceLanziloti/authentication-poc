@@ -34,9 +34,6 @@ export function SigninFormComponent() {
   },[ signIn ])
 
   return (
-    <SigninFormTemplate 
-      handleSubmit={handleSubmit(onSubmit)}
-      register={register}
-    />
+    <SigninFormTemplate handleSubmit={handleSubmit(onSubmit)} register={register} />
   )
 }
