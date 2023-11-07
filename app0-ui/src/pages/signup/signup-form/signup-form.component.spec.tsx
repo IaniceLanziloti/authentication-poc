@@ -1,15 +1,15 @@
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { getByText, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { SignupFormComponent } from "./signup-form.component";
-import userEvent from "@testing-library/user-event";
+
 import { api } from "../../../libs/api";
 
 describe('Signup form component', () => {
   beforeAll(() => {
     vi.clearAllMocks()
   })
-
 
   // it('should be able to render the signup form component', () => {
   //   const { getByTestId } = render(<SignupFormComponent/>)
