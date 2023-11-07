@@ -7,7 +7,6 @@ import { useCallback } from "react";
 import { api } from '../../../libs/api';
 
 export function SigninFormComponent() {
-
   const {
     register,
     handleSubmit,
@@ -16,7 +15,7 @@ export function SigninFormComponent() {
   const signIn = useSignIn()
 
   const onSubmit: SubmitHandler<AuthenticationFormData> = useCallback(async (data) => {
-    await new Promise(resolve => setTimeout(resolve,2000))
+    // await new Promise(resolve => setTimeout(resolve,2000))
 
     const response = await api.post('/signin', data)
     const logged = signIn({
