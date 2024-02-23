@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { AuthProvider } from "react-auth-kit";
-import { SigninPage } from "./signin.component";
+import { SigninPageComponent } from "./signin.component";
 
 describe('Signin page component', () => {
   it('should be able to render a Signin page component', () => {
@@ -13,7 +13,7 @@ describe('Signin page component', () => {
         cookieDomain={'http://localhost/'}
         cookieSecure={ false }
       >
-        <SigninPage/>
+        <SigninPageComponent/>
       </AuthProvider>
     )
 

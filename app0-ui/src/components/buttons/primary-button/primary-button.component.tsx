@@ -23,8 +23,7 @@ export function PrimaryButton({ onClick, children, loadingText, ...rest }: IPrim
 
   return (
     <PrimaryButtonTemplate onClick={ handleClick } disabled={isLoading} {...rest }>
-      { isLoading && loadingText }
-      { !isLoading && children }
+      { isLoading && loadingText ? loadingText : children }
     </PrimaryButtonTemplate>
   )
 }

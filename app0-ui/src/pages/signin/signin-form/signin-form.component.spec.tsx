@@ -89,13 +89,13 @@ describe("Signin Form component", () => {
     expect(getByTestId('form-actions-wrapper')).toBeInTheDocument()
 
     const emailInput =  getByPlaceholderText(/email/i)
-    await userEvent.type(emailInput,'mzgroup@mzgroup.com')
+    await userEvent.type(emailInput,'johndoe@example.com')
 
     const emailPassword = getByPlaceholderText(/password/i)
     await userEvent.type(emailPassword,'123456')
     
     await waitFor(() => {
-      expect(emailInput).toHaveValue('mzgroup@mzgroup.com')
+      expect(emailInput).toHaveValue('johndoe@example.com')
       expect(emailPassword).toHaveValue('123456')
     },{ timeout: 250 })
 
@@ -104,9 +104,10 @@ describe("Signin Form component", () => {
 
     expect(mockApi).toHaveBeenCalledOnce()
     expect(mockApi).toHaveBeenCalledWith('/signin',{
-      email: 'mzgroup@mzgroup.com',
+      email: 'johndoe@example.com',
       password: '123456'
     })
+
     expect(mockSignin).toHaveBeenCalledOnce()
     expect(mockSignin).toHaveBeenCalledWith({
       token: accessToken,
@@ -115,4 +116,5 @@ describe("Signin Form component", () => {
       authState: userData
     })
   })
+  
 })

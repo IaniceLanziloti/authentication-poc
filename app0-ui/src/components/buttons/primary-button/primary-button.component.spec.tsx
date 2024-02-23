@@ -1,5 +1,5 @@
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import userEvent from '@testing-library/user-event'
 import { render } from "@testing-library/react";
@@ -7,8 +7,7 @@ import { render } from "@testing-library/react";
 import { PrimaryButton } from "./primary-button.component";
 
 describe('Primary button component', () => {
-
-  it('should be able to render a primary button component', ()=> {
+  it('should be able to render a primary button component', async ()=> {
     const { getByTestId } = render(
       <PrimaryButton 
         type="button"
@@ -21,13 +20,13 @@ describe('Primary button component', () => {
 
     const primaryButton = getByTestId('primary-button')
 
-    userEvent.click(primaryButton)
+    await userEvent.click(primaryButton)
 
     expect(primaryButton).toHaveTextContent('Testing primary button')
   })
 
-  it('should be able click on a primary button', async () => {
-    const handleClick = () => { return }
+  it('should be able to click on a primary button', async () => {
+    const handleClick = vi.fn()
     const initialText = "Testing button click"
 
     const { getByTestId, findByText } = render(
@@ -39,16 +38,15 @@ describe('Primary button component', () => {
       </PrimaryButton>
     )
 
-    expect(getByTestId('primary-button')).toBeInTheDocument()
-
     const primaryButton = getByTestId('primary-button')
+    expect(primaryButton).toBeInTheDocument()
 
-    userEvent.click(primaryButton)
+    await userEvent.click(primaryButton)
 
-    expect(await findByText(initialText)).toBeInTheDocument()
+    expect(await findByText(initialText,{},{timeout:500})).toBeInTheDocument()
   })
 
-  it('should be able to render a login text and disable button when the click action was a promise', async () => {
+  it('should be able to render a loading text and disable the button when the click action was a promise', async () => {
     const loadingText = "Loading..."
     const initialText = "Testing button click"
 
@@ -56,7 +54,7 @@ describe('Primary button component', () => {
       resolve => setTimeout(resolve, 500)
     );
 
-    const { getByTestId, findByText } = render (
+    const { getByTestId, findByText, debug} = render (
       <PrimaryButton 
         onClick={handleClick}
         type='button'
@@ -66,10 +64,9 @@ describe('Primary button component', () => {
       </PrimaryButton>
     )
 
-    expect(getByTestId('primary-button')).toBeInTheDocument()
-    expect(getByTestId('primary-button')).toHaveTextContent(initialText)
-
     const primaryButton = getByTestId('primary-button')
+    expect(primaryButton).toBeInTheDocument()
+    expect(primaryButton).toHaveTextContent(initialText)
 
     userEvent.click(primaryButton)
 
@@ -81,6 +78,7 @@ describe('Primary button component', () => {
 
     expect(afterResolveButton).toBeInTheDocument()
     expect(afterResolveButton).toBeEnabled()
+
   })
 
 })

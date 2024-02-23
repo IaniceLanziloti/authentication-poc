@@ -1,6 +1,6 @@
 import { SigninPageTemplate } from "./signin.template";
 
 
-export function SigninPage() {
+export function SigninPageComponent() {
   return <SigninPageTemplate />
 }

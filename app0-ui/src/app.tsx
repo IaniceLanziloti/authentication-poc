@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from 'react-auth-kit'
 
 import './index.css'
-import { AppRoutes } from "./components/routes";
+import { AppRoutes } from "./routes";
 
 
 function App() {
