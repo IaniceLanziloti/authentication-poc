@@ -1,7 +1,8 @@
-import { render } from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { PrimaryButtonTemplate } from "./primary-button.template";
+import userEvent from "@testing-library/user-event";
 
 
 describe('Primary button template', () => {
